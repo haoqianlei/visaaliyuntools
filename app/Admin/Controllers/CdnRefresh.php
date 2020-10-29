@@ -38,7 +38,7 @@ class CdnRefresh extends Form
         } else {
             admin_error($result, 'error');
         }
-        return back();
+        return redirect()->route('admin.cdn-refresh-logs.index');
     }
 
     /**
