@@ -5,8 +5,6 @@ namespace App\Admin\Controllers;
 use App\Services\AliyunService;
 use Encore\Admin\Widgets\Form;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use function AlibabaCloud\Client\json;
 
 class CdnRefresh extends Form
 {
@@ -15,7 +13,7 @@ class CdnRefresh extends Form
      *
      * @var string
      */
-    public $title = 'Cdn刷新工具';
+    public $title = 'Cdn Refresh';
 
     /**
      * Handle the form request.
@@ -49,7 +47,7 @@ class CdnRefresh extends Form
     public function form()
     {
         $this->select('ObjectType', '刷新类型')->options([1 => 'File', 2 => 'Directory'])->default(1);
-        $this->textarea('ObjectPath', '路径')->rules('required')->help('<span style="color:red;">每行输入一个 Url 请遵守规则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File 类型：https://digitas.yijiuplus.com/1.jpg<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directory 类型：https://digitas.yijiuplus.com/visa/</span>');
+        $this->textarea('ObjectPath', '路径')->rules('required')->help('<span style="color:red;">每行输入一个 Url ，可以输入多行。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请遵守规则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File 类型：https://digitas.yijiuplus.com/1.jpg<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directory 类型：https://digitas.yijiuplus.com/visa/</span>');
 
     }
 
@@ -61,9 +59,8 @@ class CdnRefresh extends Form
     public function data()
     {
         return [
-            'name' => 'John Doe',
-            'email' => 'John.Doe@gmail.com',
-            'created_at' => now(),
+            'ObjectType' => 2,
+            'ObjectPath' => 'https://digitas.yijiuplus.com/',
         ];
     }
 }

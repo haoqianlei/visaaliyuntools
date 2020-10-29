@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Laravel-admin',
+    'name' => 'Visa Aliyun Tools',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Laravel</b> admin',
+    'logo' => '<b>Visa Aliyun Tools</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>Visa</b>',
 
     /*
     |--------------------------------------------------------------------------
