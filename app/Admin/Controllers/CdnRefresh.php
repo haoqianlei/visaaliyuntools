@@ -34,9 +34,9 @@ class CdnRefresh extends Form
         list($status, $result) = $aliyunService->cdnRefresh($requestData['ObjectPath'], $ObjectType);
         //执行刷新
         if ($status) {
-            admin_toastr('Refresh succeeded.', 'success');
+            admin_success('Refresh succeeded.', 'success');
         } else {
-            admin_toastr($result, 'error');
+            admin_error($result, 'error');
         }
         return back();
     }

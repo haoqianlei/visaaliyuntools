@@ -58,4 +58,37 @@ class AliyunService
             return [false, $e->getErrorMessage()];
         }
     }
+
+    /**
+     * Notes:[CDN刷新记录]
+     * User: COJOY_10
+     * Date: 2020/10/29
+     * Time: 19:25
+     * @return array
+     */
+    public function cdnRefreshLog()
+    {
+        //初始化配置
+        try {
+            $result = $this->alibabCloud::rpc()
+                ->product('Cdn')
+                ->scheme('https')// https | http
+                ->version('2018-05-10')
+                ->action('DescribeRefreshTasks')
+                ->method('POST')
+                ->options([
+                    'query' => [
+                        'RegionId' => config('aliyun.RegionId')
+                    ],
+                ])
+                ->request();
+            return [true, $result];
+        } catch (ClientException $e) {
+            Log::error($e->getErrorMessage() . PHP_EOL);
+            return [false, $e->getErrorMessage()];
+        } catch (ServerException $e) {
+            Log::error($e->getErrorMessage() . PHP_EOL);
+            return [false, $e->getErrorMessage()];
+        }
+    }
 }

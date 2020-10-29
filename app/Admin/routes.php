@@ -10,6 +10,7 @@ Route::group([
     'middleware' => config('admin.route.middleware'),
     'as' => config('admin.route.prefix') . '.',
 ], function (Router $router) {
-    $router->any('/cdn/refresh', CdnRefresh::class);
     $router->get('/', 'HomeController@index')->name('home');
+    $router->get('/cdn/refresh', CdnRefresh::class);
+    $router->resource('cdn-refresh-logs', CdnRefreshLogController::class);
 });
