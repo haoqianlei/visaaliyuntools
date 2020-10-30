@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Admin;
 
 class CdnRefreshLogController extends AdminController
 {
@@ -25,6 +26,7 @@ class CdnRefreshLogController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new CdnRefreshLog());
+        $grid->enableHotKeys();
         $grid->disableCreateButton();
         $grid->disableFilter();
         $grid->disableExport();
@@ -39,7 +41,9 @@ class CdnRefreshLogController extends AdminController
         $grid->column('TaskId');
         $grid->column('CreationTime');
         $grid->column('Process');
-
+        Admin::script('setTimeout(function(){
+                $.admin.reload();
+        }, 5000);');
         return $grid;
     }
 
