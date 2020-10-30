@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Services\AliyunService;
 use Encore\Admin\Widgets\Form;
 use Illuminate\Http\Request;
+use Encore\Admin\Admin;
 
 class CdnRefresh extends Form
 {
@@ -47,9 +48,9 @@ class CdnRefresh extends Form
      */
     public function form()
     {
+        Admin::script('window.clearTimeout(window.time)');
         $this->select('ObjectType', '刷新类型')->options([1 => 'File', 2 => 'Directory'])->default(1);
         $this->textarea('ObjectPath', '路径')->rules('required')->help('<span style="color:red;">每行输入一个 Url ，可以输入多行。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请遵守规则：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File 类型：https://digitas.yijiuplus.com/1.jpg<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directory 类型：https://digitas.yijiuplus.com/visa/</span>');
-
     }
 
     /**

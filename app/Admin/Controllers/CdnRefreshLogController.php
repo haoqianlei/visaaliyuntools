@@ -41,7 +41,8 @@ class CdnRefreshLogController extends AdminController
         $grid->column('TaskId');
         $grid->column('CreationTime');
         $grid->column('Process');
-        Admin::script('setTimeout(function(){
+        Admin::script('window.time = window.setTimeout(function(){
+//               $(".container-refresh").click();
                 $.admin.reload();
         }, 5000);');
         return $grid;
