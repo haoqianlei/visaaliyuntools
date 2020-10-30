@@ -16,7 +16,7 @@ class CdnRefreshLogController extends AdminController
      *
      * @var string
      */
-    protected $title = 'CdnRefreshLog';
+    protected $title = 'Cdn Refresh Log';
 
     /**
      * Make a grid builder.
